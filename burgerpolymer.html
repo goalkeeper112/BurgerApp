@@ -1,0 +1,208 @@
+<head>
+  <!-- Add any <link rel="import" href="[path/to/element]"> tags you will use -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+<link rel="import" 
+  href="bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" 
+  href="bower_components/core-menu/core-menu.html">
+<link rel="import" 
+  href="bower_components/core-item/core-item.html">
+<link rel="import" 
+  href="bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" 
+  href="bower_components/core-drawer-panel/core-drawer-panel.html">
+<link rel="import" 
+  href="bower_components/core-scaffold/core-scaffold.html">
+<link rel="import" 
+  href="bower_components/paper-item/paper-item.html">
+<link href="bower_components/core-icons/core-icons.html" rel="import">
+
+<link href="bower_components/core-pages/core-pages.html" rel="import">
+
+<link href="bower_components/paper-ripple/paper-ripple.html" rel="import">
+
+<link href="bower_components/paper-input/paper-input.html" rel="import">
+
+<link href="bower_components/paper-button/paper-button.html" rel="import">
+
+<link href="bower_components/paper-fab/paper-fab.html" rel="import">
+
+<link href="bower_components/core-item/core-item.html" rel="import">
+
+</head>
+<body >
+  <!-- Simply use elements in body or in templates -->
+</body>
+
+<template name="layout">
+	<div fullbleed vertical layout unresolved ng-app="app">
+		<core-scaffold>
+
+		  <core-header-panel navigation flex>
+		    <core-toolbar id="navheader">
+		      <span center>Menu</span>
+		    </core-toolbar>
+		    <core-menu>
+			    <paper-item icon="home" label="Dashboard" ng-submit="pedidoCarne()"></paper-item>
+		    	<paper-item icon="menu" label="Pedidos"></paper-item>
+		    	<paper-item icon="favorite" label="Valoraciones"></paper-item>
+			</core-menu>
+		  </core-header-panel>
+		  
+		  <span tool>Bienvenido a BurgerApp {{> loginButtons}}</span>
+
+		  <div class="content">
+		      {{> yield}}
+		  </div>
+		</core-scaffold>
+	</div>
+</template>
+
+<template name="nombreDesubikda">
+	<div class="card">
+	    <core-toolbar>Hamburgesa Desubikda Precio: 100bs </core-toolbar>
+	      <paper-ripple class="recenteringTouch" fit></paper-ripple>
+	    <div class="content" ng-controller="main">
+	    	<img src="http://janiaalvarez.files.wordpress.com/2012/10/sencilla.jpg"><br>
+
+	    	<p>Esta deliciosa hamburgesa viene resuelta con una suculenta carne de res acompañada de las salsas básicas(tomate, mostaza, mayonesa) y se le puede agregar salsa de ajo, nuestras hamburgesas vienen con tomate, jamon y queso. Si deseas algún extra como huevo o quitar algún ingrediente puedes escribirlo a la derecha</p><br>
+			<form>
+				<paper-input multiline label="Aquí puedes enviarnos lo que deseas extra o quitar de tú hamburgesa" ng-model="pedido"></paper-input>
+				<paper-button raised class="carne" >Pedir</paper-button>
+			</form>
+	    </div>
+    </div>
+    <paper-fab icon="arrow-forward" id="siguiente"></paper-fab>
+</template>
+
+<template name="nombreDesubikte">
+	<div class="card">
+		<core-toolbar>Hamburgesa Desubikte Precio: 150bs </core-toolbar>
+		  <paper-ripple class="recenteringTouch" fit></paper-ripple>
+		<div class="content">
+			<img src="http://3.bp.blogspot.com/-Z7ShpiD_6DQ/TyTO8stPvLI/AAAAAAAAACk/R7nFd9-vG7U/s1600/1326652653426.jpg"><br>
+			<p>Esta deliciosa hamburgesa viene resuelta con dos suculentas carnes de res acompañada de las salsas básicas(tomate, mostaza, mayonesa) y se le puede agregar salsa de ajo, nuestras hamburgesas vienen con tomate, jamon y queso. Si deseas algún extra como huevo o quitar algún ingrediente puedes escribirlo a la derecha </p><br>
+			<form method="post" class="dobleCarne">
+				<paper-input multiline label="Aquí puedes enviarnos lo que deseas extra o quitar de tú hamburgesa"></paper-input>
+				<paper-button raised>Pedir</paper-button>
+			</form>
+		</div>
+	</div>
+	<paper-fab icon="arrow-forward" id="siguiente2"></paper-fab>
+</template>
+
+<template name="nombreChicaPollo">
+	<div class="card">
+		<core-toolbar>Hamburgesa Chica Pollo Precio: 130bs </core-toolbar>
+			<paper-ripple class="recenteringTouch" fit></paper-ripple>
+			<div class="content">
+			<img src="http://www.valesdedescuentos.com.ar/congeladas/congeladas/empresasg.jpg"><br>
+			<p>Esta deliciosa hamburgesa viene resuelta con una suculenta milanesa de pollo acompañada de las salsas básicas(tomate, mostaza, mayonesa) y se le puede agregar salsa de ajo, nuestras hamburgesas vienen con tomate, jamon y queso. Si deseas algún extra como huevo o quitar algún ingrediente puedes escribirlo a la derecha </p><br>
+			<form method="post" class="chicaPollo">
+				<paper-input multiline label="Aquí puedes enviarnos lo que deseas extra o quitar de tú hamburgesa"></paper-input>
+				<paper-button raised>Pedir</paper-button>
+			</form>
+		</div>
+	</div>
+	<paper-fab icon="arrow-forward" id="siguiente3"></paper-fab>
+</template>
+
+<template name="LoginPanel">
+	<img src="icono.png" style="width: 50%; height: 50%;"><br>
+		<h1>Entra a la BurgerApp y Pidenos tú hamburgesa!</h1><br>
+</template>
+
+<template name="AdminPanel">
+	<div class="container text-center">
+		<div class="jumbotron">
+			<div class="page-header">
+				<h1>Ordenes y Valoraciones</h1>
+				{{> loginButtons}}
+			</div>
+			<div class="content">
+				<table class="table table-hover">
+					<thead>
+						<th>Usuario</th>
+						<th>Pedido</th>
+						<th>Realizada</th>
+					</thead>
+					<tbody>
+						<tr>
+							{{#each pedidos}}
+								<td>{{> usuarios}}</td>
+								<td>{{> orden}}</td>
+								<td>{{> realizadas}}</td>
+							{{/each}}
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="Main">
+  	<core-pages selected="0">
+		<div>{{> nombreDesubikda}}</div>
+		<div>{{> nombreDesubikte}}</div>
+		<div>{{> nombreChicaPollo}}</div>
+	</core-pages>
+
+	<script>
+
+	var app = angular.module("app", []);
+
+	app.controller("main", function($scope){
+		$scope.pedirCarne = function(){
+			var userName = Meteor.user().username;
+
+		      Session.set("user", userName);
+		      
+
+		      Pedidos.insert({
+		        pedido: "con todo"
+		      }, function(){
+		      	console.log("enviado");
+		      });
+
+		      $(".extraCarne").val("");
+
+		      return false;
+		}
+	});
+
+	var siguiente = document.getElementById("siguiente");
+	siguiente.addEventListener('click', function(e) {
+	    var pages = document.querySelector('core-pages');
+	    pages.selected = (pages.selected + 1) % pages.children.length;
+	  });
+
+	var siguiente2 = document.getElementById("siguiente2");
+	siguiente2.addEventListener('click', function(e) {
+	    var pages = document.querySelector('core-pages');
+	    pages.selected = (pages.selected + 1) % pages.children.length;
+	  });
+
+	var siguiente3 = document.getElementById("siguiente3");
+	siguiente3.addEventListener('click', function(e) {
+	    var pages = document.querySelector('core-pages');
+	    pages.selected = (pages.selected + 1) % pages.children.length;
+	  });
+	</script>
+</template>
+
+<template name="usuarios">
+	<big>{{ Usuario }}</big>
+</template>	
+
+<template name="orden">
+	<big>{{Pedidos.hamburgesa}}</big>
+	<big>{{Pedidos.extra}}</big>
+	<big>{{Pedidos.precio}}</big>
+	<big>{{fecha}}</big>
+</template>	
+
+<template name="realizadas">
+	<big>{{realizada}}</big>
+</template>		
+
